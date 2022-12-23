@@ -5,20 +5,23 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.my.demo.testlogin.adapter.SuperHeroAdapter
+import com.my.demo.testlogin.databinding.ActivityHomeBinding
+import com.my.demo.testlogin.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity() {
 
-    val superHeroList = SuperHeroProvider.superHeroList
+    private val superHeroList = SuperHeroProvider.superHeroList
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initRecyclerView()
     }
 
     private fun initRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.rvSuperHero)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = SuperHeroAdapter(superHeroList);
+        binding.rvSuperHero.layoutManager = LinearLayoutManager(this)
+        binding.rvSuperHero.adapter = SuperHeroAdapter(superHeroList);
     }
 }
