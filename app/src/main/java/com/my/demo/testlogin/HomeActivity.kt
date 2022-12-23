@@ -2,6 +2,7 @@ package com.my.demo.testlogin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.my.demo.testlogin.adapter.SuperHeroAdapter
@@ -22,6 +23,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         binding.rvSuperHero.layoutManager = LinearLayoutManager(this)
-        binding.rvSuperHero.adapter = SuperHeroAdapter(superHeroList);
+        binding.rvSuperHero.adapter = SuperHeroAdapter(superHeroList) { superHero ->
+            onSelectedSuperHero(superHero)
+        };
+    }
+
+    private fun onSelectedSuperHero(superHero: SuperHero) {
+        Toast.makeText(this, "Hero: " + superHero.superhero, Toast.LENGTH_SHORT).show()
     }
 }

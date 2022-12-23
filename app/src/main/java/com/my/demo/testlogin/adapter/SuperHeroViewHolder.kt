@@ -14,21 +14,14 @@ class SuperHeroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val binding = ItemSuperheroBinding.bind(view)
 
-    fun render(superHeroModel: SuperHero) {
+    fun render(superHeroModel: SuperHero, onClickListener: (SuperHero) -> Unit) {
         binding.tvName.text = superHeroModel.superhero
         binding.tvSubtitle.text = superHeroModel.realName
         binding.tvFecha.text = superHeroModel.publisher
         Glide.with(binding.ivPhoto.context).load(superHeroModel.photo).into(binding.ivPhoto)
 
-
-        binding.ivPhoto.setOnClickListener {
-            Toast.makeText(binding.ivPhoto.context, superHeroModel.realName, Toast.LENGTH_SHORT)
-                .show()
-        }
-
         itemView.setOnClickListener {
-            Toast.makeText(binding.ivPhoto.context, superHeroModel.superhero, Toast.LENGTH_SHORT)
-                .show()
+            onClickListener(superHeroModel)
         }
 
     }
