@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         binding.rvSuperHero.adapter = SuperHeroAdapter(superHeroList) { superHero ->
             onSelectedSuperHero(superHero)
         };
-        binding.rvSuperHero.addItemDecoration(decoration)
+//        binding.rvSuperHero.addItemDecoration(decoration)
     }
 
     private fun onSelectedSuperHero(superHero: SuperHero) {
